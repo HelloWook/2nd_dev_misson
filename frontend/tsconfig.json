@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "target": "es6",
+    "module": "esnext",
+    "jsx": "react-jsx",
+    "strict": true,
+    "esModuleInterop": true,
+    "skipLibCheck": true,
+    "forceConsistentCasingInFileNames": true,
+    "moduleResolution": "node",
+    "baseUrl": "./src", // 기준 경로 설정
+    "paths": {
+      "@/*": ["*"], // '@'를 src 디렉토리의 모든 파일로 매핑
+      "@/components/*": ["components/*"] // components 폴더로의 절대 경로 매핑
+    }
+  },
+  "include": ["src"],
+  "exclude": ["node_modules"]
+}
