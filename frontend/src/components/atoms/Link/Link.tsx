@@ -8,8 +8,9 @@ interface LinkProps {
 }
 
 const LinkStyle = styled.a<LinkProps>`
+  display: block;
   border: 1px solid black;
-  padding: 10px ${(props) => (props.padding !== undefined ? `${props.padding}px` : '181px')};
+  padding: 15px ${(props) => (props.padding !== undefined ? `${props.padding}px` : '181px')};
   text-decoration: none;
   border-radius: 15px;
   font-size: 24px;

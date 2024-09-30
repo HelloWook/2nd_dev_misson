@@ -16,10 +16,11 @@ const SearchPostStyle = styled.div<{ width?: string }>`
   width: ${({ width }) => width}px;
   display: flex;
   flex-direction: column;
+  height: 290px;
 `
 
 const SearchPostItemStyle = styled.div`
-  padding: 8px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
   flex-grow: 1;
@@ -55,7 +56,13 @@ const ImageWrapper = styled.div`
     object-fit: cover;
   }
 `
-
+/**
+ *
+ * @param SearchPostTitle 타이틀
+ * @param SearchPostLocation 공연 위치
+ * @param SearchPostDate 날짜
+ * @returns
+ */
 const SearchPost = ({ SearchPostTitle, SearchPostLocation, SearchPostDate, width = '230' }: SearchPostProps) => {
   return (
     <SearchPostStyle width={width}>

@@ -17,7 +17,7 @@ const ButtonStyle = styled.button<ButtonProps>`
   font-size: 16px;
   border: none;
   cursor: pointer;
-
+  font-weight: bold;
   ${({ variant }) => {
     switch (variant) {
       case 'primary':
