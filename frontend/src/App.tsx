@@ -5,7 +5,7 @@ const App: React.FC = () => {
   return (
     <>
       <GlobalStyles />
-      <BannerSlider></BannerSlider>
+      <h1>안녕</h1>
     </>
   )
 }
