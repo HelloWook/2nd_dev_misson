@@ -1,6 +1,5 @@
 import Button from '@/components/atoms/Button/Button'
 import Margin from '@/components/atoms/Margin/Margin'
-
 import React, { useState } from 'react'
 import styled from 'styled-components'
 

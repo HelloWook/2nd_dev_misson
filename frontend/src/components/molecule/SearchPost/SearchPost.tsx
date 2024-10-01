@@ -1,6 +1,6 @@
+import Image from '@/components/atoms/Image/Image'
 import React from 'react'
 import styled from 'styled-components'
-import Image from '@/components/atoms/Image/Image'
 
 interface SearchPostProps {
   SearchPostTitle: string
@@ -8,13 +8,14 @@ interface SearchPostProps {
   SearchPostDate: string
   width?: string
   variant?: 'primary' | 'secondary'
+  imageSrc?: string
 }
 
-const SearchPostStyle = styled.div<SearchPostProps>`
+const SearchPostStyle = styled.div<{ width: string }>`
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: ${({ width }) => width}px;
+  width: ${({ width }) => width};
   display: flex;
   flex-direction: column;
   height: 290px;
@@ -41,45 +42,36 @@ const SearchPostLocationDate = styled.span`
   text-overflow: ellipsis;
 `
 
-const SearchPostDateStyle = styled.span<SearchPostProps>`
+const SearchPostDateStyle = styled.span<{ variant: 'primary' | 'secondary' }>`
   font-size: ${({ variant }) => (variant === 'primary' ? '16px' : '14px')};
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
 `
+
 const ImageWrapper = styled.div`
   width: 100%;
   height: 200px;
   overflow: hidden;
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-  }
 `
-/**
- *
- * @param SearchPostTitle 타이틀
- * @param SearchPostLocation 공연 위치
- * @param SearchPostDate 날짜
- * @returns
- */
+
 const SearchPost = ({
   SearchPostTitle,
   SearchPostLocation,
   SearchPostDate,
-  width = '230',
+  width = '230px',
   variant = 'primary',
+  imageSrc,
 }: SearchPostProps) => {
   return (
     <SearchPostStyle width={width}>
       <ImageWrapper>
-        <Image />
+        <Image src={imageSrc} />
       </ImageWrapper>
       <SearchPostItemStyle>
         <SearchPostTitleStyle>{SearchPostTitle}</SearchPostTitleStyle>
         <SearchPostLocationDate>{SearchPostLocation}</SearchPostLocationDate>
-        <SearchPostDateStyle>{SearchPostDate}</SearchPostDateStyle>
+        <SearchPostDateStyle variant={variant}>{SearchPostDate}</SearchPostDateStyle>
       </SearchPostItemStyle>
     </SearchPostStyle>
   )
