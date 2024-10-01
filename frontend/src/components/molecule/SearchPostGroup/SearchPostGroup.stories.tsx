@@ -5,7 +5,7 @@ import SearchPostGroup from './SearchPostGroup'
 
 const meta: Meta<typeof SearchPostGroup> = {
   component: SearchPostGroup,
-  title: 'SearchPostGroup',
+  title: 'MOLECULE/SearchPostGroup',
   tags: ['autodocs'],
   argTypes: {},
 }

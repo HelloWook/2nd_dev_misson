@@ -20,3 +20,13 @@ export const Default: Story = {
     SearchPostDate: '2024.08.06~2024.09.02',
   },
 }
+
+export const Recommend: Story = {
+  args: {
+    width: '180',
+    variant: 'secondary',
+    SearchPostTitle: '15주년 기념공연, 영웅',
+    SearchPostLocation: '예술의 전당',
+    SearchPostDate: '2024.08.06~2024.09.02',
+  },
+}

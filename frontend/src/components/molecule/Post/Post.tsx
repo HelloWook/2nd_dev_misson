@@ -5,6 +5,7 @@ import Image from '@/components/atoms/Image/Image'
 interface PostProps {
   postTitle: string
   postSummary: string
+  src?: string
   width?: string
 }
 
@@ -21,10 +22,9 @@ const PostItemStyle = styled.div`
   padding: 8px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
 `
 
-const PostTitleStyle = styled.h3`
+const PostTitleStyle = styled.h4`
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 4px;
@@ -48,11 +48,11 @@ const ImageWrapper = styled.div`
   }
 `
 
-const Post = ({ postTitle, postSummary, width = '340' }: PostProps) => {
+const Post = ({ postTitle, postSummary, width = '340', src }: PostProps) => {
   return (
     <PostStyle width={width}>
       <ImageWrapper>
-        <Image />
+        <Image src={src} />
       </ImageWrapper>
       <PostItemStyle>
         <PostTitleStyle>{postTitle}</PostTitleStyle>

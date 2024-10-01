@@ -12,7 +12,7 @@ interface EventRecommendationProps {
 const EventRecommendation = ({ ClcikEvent, imgList }: EventRecommendationProps) => {
   return (
     <div>
-      <Subtitle isCenter={true}>장르별 추천 공연</Subtitle>
+      <Subtitle>장르별 추천 공연</Subtitle>
       <Margin bottom={49} />
       <ButtonGroup clickEvent={ClcikEvent} />
       <Margin bottom={45} />

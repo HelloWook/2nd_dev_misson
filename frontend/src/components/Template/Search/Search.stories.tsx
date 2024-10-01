@@ -5,7 +5,7 @@ import Search from './Search'
 
 const meta: Meta<typeof Search> = {
   component: Search,
-  title: 'Pages/Search',
+  title: 'Template/Search',
   tags: ['autodocs'],
   argTypes: {},
 }

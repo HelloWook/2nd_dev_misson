@@ -9,6 +9,7 @@ import Margin from '@/components/atoms/Margin/Margin'
 const EventInfoStyle = styled.div`
   max-width: 1211px;
   overflow: hidden;
+  margin: auto;
 `
 
 const BookSectionStyle = styled.div`

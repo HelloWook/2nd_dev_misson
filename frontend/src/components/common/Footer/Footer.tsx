@@ -6,7 +6,6 @@ const FooterStyled = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
   height: 116px;
   gap: 20px;
   border-top: 1px solid rgba(0, 0, 0, 0.1);
@@ -18,7 +17,7 @@ const Footer = () => {
   return (
     <FooterStyled>
       <Logo />
-      <span>© 2024 cultruetree. All rights reserved.</span>
+      <SpanStlyed>© 2024 cultruetree. All rights reserved.</SpanStlyed>
     </FooterStyled>
   )
 }

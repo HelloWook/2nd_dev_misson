@@ -1,4 +1,6 @@
+import Margin from '@/components/atoms/Margin/Margin'
 import EventInfo from '@/components/common/EvnetInfo/EvnetInfo'
+import Footer from '@/components/common/Footer/Footer'
 import Header from '@/components/common/Header/Header'
 import ReviewSection from '@/components/common/ReviewSection/ReviewSection'
 import DetailNote from '@/components/molecule/DetailNote/DetailNote'
@@ -35,10 +37,7 @@ interface DetailProps {
   comments: CommentInfo[]
 }
 
-const DetailStyle = styled.div`
-  max-width: 1211px;
-  margin: auto;
-`
+const DetailStyle = styled.div``
 
 const Detail = ({
   eventID,
@@ -68,6 +67,8 @@ const Detail = ({
       />
       <DetailNote note={note} noteSrc={noteSrc} />
       <ReviewSection comments={comments} />
+      <Margin top={110} />
+      <Footer />
     </DetailStyle>
   )
 }

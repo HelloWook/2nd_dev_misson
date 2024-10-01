@@ -1,20 +1,18 @@
-import Comment from '@/components/atoms/Comment/Comment'
 import React from 'react'
 import Slider, { Settings } from 'react-slick'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import styled from 'styled-components'
+import SearchPost from '@/components/molecule/SearchPost/SearchPost'
 
 const SlideStyle = styled.div`
   .slick-prev:before,
   .slick-next:before {
     content: none;
   }
-  width: 800px;
-  margin: auto;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  width: 1100px;
+  margin: 0 auto;
+  position: relative;
 `
 
 const arrowStyle: React.CSSProperties = {
@@ -30,7 +28,8 @@ const arrowStyle: React.CSSProperties = {
   cursor: 'pointer',
   zIndex: 1000,
   position: 'absolute',
-  top: '30%',
+  top: '50%',
+  transform: 'translateY(-50%)',
 }
 
 const ArrowButton = styled.button`
@@ -44,30 +43,31 @@ const ArrowButton = styled.button`
   justify-content: center;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   cursor: pointer;
-  z-index: 1;
+  z-index: 1000;
 
   &:hover {
     background-color: #f0f0f0;
   }
 `
+
 interface SlickArrowProps {
   style?: React.CSSProperties
   onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-interface CommentInfo {
-  user: string
-  rating: number
-  comment: string
+interface postInfo {
+  SearchPostTitle: string
+  SearchPostLocation: string
+  SearchPostDate: string
 }
 
-interface CommentSliderProps {
-  comments: CommentInfo[]
+interface RecommendSliderProps {
+  posts: postInfo[]
 }
 
 const CustomPrevArrow: React.FC<SlickArrowProps> = ({ style, onClick }) => {
   return (
-    <ArrowButton style={{ ...style, ...arrowStyle, left: '-9%' }} onClick={onClick}>
+    <ArrowButton style={{ ...style, ...arrowStyle, left: '-60px' }} onClick={onClick}>
       <span style={{ fontSize: '30px', fontWeight: 'bold' }}>‹</span>
     </ArrowButton>
   )
@@ -75,22 +75,17 @@ const CustomPrevArrow: React.FC<SlickArrowProps> = ({ style, onClick }) => {
 
 const CustomNextArrow: React.FC<SlickArrowProps> = ({ style, onClick }) => {
   return (
-    <ArrowButton style={{ ...style, ...arrowStyle, right: '-8%' }} onClick={onClick}>
+    <ArrowButton style={{ ...style, ...arrowStyle, right: '-20px' }} onClick={onClick}>
       <span style={{ fontSize: '30px', fontWeight: 'bold' }}>›</span>
     </ArrowButton>
   )
 }
 
-/**
- * 사용자명, 별점, 댓글 내용을 가진 객체 배열을 슬라이더로 렌더링
- * @param comments 사용자명, 별점, 댓글 내용을 가진 객체를 배열로 가진다.
- * @returns JSX.Element
- */
-const CommentSlider = ({ comments = [] }: CommentSliderProps) => {
+const RecommendSlider = ({ posts = [] }: RecommendSliderProps) => {
   const settings: Settings = {
-    infinite: comments.length > 3,
+    infinite: posts.length > 5,
     speed: 500,
-    slidesToShow: 3,
+    slidesToShow: 5,
     slidesToScroll: 1,
     nextArrow: <CustomNextArrow />,
     prevArrow: <CustomPrevArrow />,
@@ -99,12 +94,19 @@ const CommentSlider = ({ comments = [] }: CommentSliderProps) => {
   return (
     <SlideStyle>
       <Slider {...settings}>
-        {comments.map((val, idx) => (
-          <Comment key={idx} user={val.user} rating={val.rating} comment={val.comment} />
+        {posts.map((val, idx) => (
+          <SearchPost
+            key={idx}
+            SearchPostTitle={val.SearchPostTitle}
+            SearchPostLocation={val.SearchPostLocation}
+            SearchPostDate={val.SearchPostDate}
+            width="180"
+            variant="secondary"
+          />
         ))}
       </Slider>
     </SlideStyle>
   )
 }
 
-export default CommentSlider
+export default RecommendSlider

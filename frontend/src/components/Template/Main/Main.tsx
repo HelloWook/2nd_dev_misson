@@ -27,16 +27,18 @@ interface Post {
 
 const Main = ({ clickEvent, PerformancPost, RecommendPost, TickPost }: MainProps) => {
   return (
-    <MainStlye>
+    <React.Fragment>
       <Header />
-      <BannerSlider />
-      <BestPerformance postGruop={PerformancPost} />
-      <TicketSection imgList={TickPost} />
-      <Banner />
-      <Margin bottom={134} />
-      <EventRecommendation ClcikEvent={clickEvent} imgList={RecommendPost} />
+      <MainStlye>
+        <BannerSlider />
+        <BestPerformance postGruop={PerformancPost} />
+        <TicketSection imgList={TickPost} />
+        <Banner />
+        <Margin bottom={134} />
+        <EventRecommendation ClcikEvent={clickEvent} imgList={RecommendPost} />
+      </MainStlye>
       <Footer />
-    </MainStlye>
+    </React.Fragment>
   )
 }
 

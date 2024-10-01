@@ -4,7 +4,6 @@ import Logo from '@/components/atoms/Logo/Logo'
 import styled from 'styled-components'
 
 const HeaderStyle = styled.header`
-  max-width: 1440px;
   margin: auto;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
 `

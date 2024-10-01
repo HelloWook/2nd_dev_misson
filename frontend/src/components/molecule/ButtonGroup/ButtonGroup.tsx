@@ -1,76 +1,44 @@
 import Button from '@/components/atoms/Button/Button'
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 
 const ButtonGroupStyle = styled.div`
   display: flex;
   width: 100%;
-  gap: 40px;
+  gap: 20px;
   justify-content: center;
 `
-interface ButtonGroup {
+
+interface ButtonGroupProps {
   clickEvent?: () => void
+  category?: string[]
 }
 
-const ButtonGroup = ({ clickEvent }: ButtonGroup) => {
+const ButtonGroup = ({
+  clickEvent,
+  category = ['뮤지컬', '콘서트', '스포츠', '전시/행사', '클래식/무용', '아동/가족', '연극'],
+}: ButtonGroupProps) => {
+  const [activeButtonIndex, setActiveButtonIndex] = useState<number | null>(null)
+
+  const handleButtonClick = (index: number) => {
+    setActiveButtonIndex(index)
+    if (clickEvent) clickEvent()
+  }
+
   return (
     <ButtonGroupStyle>
-      <Button
-        variant={'secondary'}
-        width={130}
-        height={50}
-        radius={45}
-        ButtonSummary={'뮤지컬'}
-        clickEvent={clickEvent}
-      />
-      <Button
-        variant={'secondary'}
-        width={130}
-        height={50}
-        radius={45}
-        ButtonSummary={'콘서트'}
-        clickEvent={clickEvent}
-      />
-      <Button
-        variant={'secondary'}
-        width={130}
-        height={50}
-        radius={45}
-        ButtonSummary={'스포츠'}
-        clickEvent={clickEvent}
-      />
-      <Button
-        variant={'secondary'}
-        width={130}
-        height={50}
-        radius={45}
-        ButtonSummary={'전시/행사'}
-        clickEvent={clickEvent}
-      />
-      <Button
-        variant={'secondary'}
-        width={130}
-        height={50}
-        radius={45}
-        ButtonSummary={'클래식/무용'}
-        clickEvent={clickEvent}
-      />
-      <Button
-        variant={'secondary'}
-        width={130}
-        height={50}
-        radius={45}
-        ButtonSummary={'아동/가족'}
-        clickEvent={clickEvent}
-      />
-      <Button
-        variant={'secondary'}
-        width={130}
-        height={50}
-        radius={45}
-        ButtonSummary={'연극'}
-        clickEvent={clickEvent}
-      />
+      {category.map((label, index) => (
+        <Button
+          key={index}
+          variant={'secondary'}
+          width={130}
+          height={50}
+          radius={45}
+          ButtonSummary={label}
+          clickEvent={() => handleButtonClick(index)}
+          isActive={activeButtonIndex === index}
+        />
+      ))}
     </ButtonGroupStyle>
   )
 }

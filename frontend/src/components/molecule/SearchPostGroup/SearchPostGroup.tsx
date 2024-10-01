@@ -6,6 +6,10 @@ import styled from 'styled-components'
 
 const SearchPostGroupStyle = styled.div`
   width: 800px;
+  height: 980px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 `
 
 const SearchPostsStyle = styled.div`
@@ -13,7 +17,6 @@ const SearchPostsStyle = styled.div`
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
   width: 100%;
-  min-height: 1100px;
 `
 interface SearchPostProps {
   SearchPostTitle: string
@@ -41,7 +44,7 @@ const SearchPostGroup = ({ posts = [], herf }: SearchPostGroupProps) => {
         ))}
       </SearchPostsStyle>
       <Margin bottom={30} />
-      <Link href={herf}>바로 가기</Link>
+      <Link href={herf}>더보기</Link>
     </SearchPostGroupStyle>
   )
 }

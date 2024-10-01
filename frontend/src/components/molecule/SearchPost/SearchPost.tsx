@@ -7,9 +7,10 @@ interface SearchPostProps {
   SearchPostLocation: string
   SearchPostDate: string
   width?: string
+  variant?: 'primary' | 'secondary'
 }
 
-const SearchPostStyle = styled.div<{ width?: string }>`
+const SearchPostStyle = styled.div<SearchPostProps>`
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: hidden;
@@ -27,7 +28,7 @@ const SearchPostItemStyle = styled.div`
   gap: 8px;
 `
 
-const SearchPostTitleStyle = styled.h3`
+const SearchPostTitleStyle = styled.h4`
   font-size: 16px;
   font-weight: 700;
   white-space: nowrap;
@@ -40,8 +41,8 @@ const SearchPostLocationDate = styled.span`
   text-overflow: ellipsis;
 `
 
-const SearchPostDateStyle = styled.span`
-  font-size: 16px;
+const SearchPostDateStyle = styled.span<SearchPostProps>`
+  font-size: ${({ variant }) => (variant === 'primary' ? '16px' : '14px')};
   overflow: hidden;
   white-space: nowrap;
   text-overflow: ellipsis;
@@ -63,7 +64,13 @@ const ImageWrapper = styled.div`
  * @param SearchPostDate 날짜
  * @returns
  */
-const SearchPost = ({ SearchPostTitle, SearchPostLocation, SearchPostDate, width = '230' }: SearchPostProps) => {
+const SearchPost = ({
+  SearchPostTitle,
+  SearchPostLocation,
+  SearchPostDate,
+  width = '230',
+  variant = 'primary',
+}: SearchPostProps) => {
   return (
     <SearchPostStyle width={width}>
       <ImageWrapper>

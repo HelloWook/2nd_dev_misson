@@ -26,7 +26,7 @@ const SliderPostItemStyle = styled.div`
   gap: 8px;
 `
 
-const SliderPostTitleStyle = styled.h3`
+const SliderPostTitleStyle = styled.h4`
   font-size: 14px;
   font-weight: 700;
   white-space: nowrap;

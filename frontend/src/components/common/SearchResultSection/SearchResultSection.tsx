@@ -8,6 +8,7 @@ import styled from 'styled-components'
 const SearchResultSectionStyle = styled.div`
   text-align: center;
   width: 1200px;
+  margin: auto;
 `
 const SearchResultSpanStyle = styled.span`
   font-size: 16px;

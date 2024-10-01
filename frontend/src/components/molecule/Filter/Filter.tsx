@@ -54,6 +54,7 @@ const FilterButtonListStlye = styled.ul`
 `
 
 const Filter: React.FC = () => {
+  // 색상 변경 상태
   const [selectedSaleStatus, setSelectedSaleStatus] = useState<number | null>(null)
   const [selectedDateStatus, setSelectedDateStatus] = useState<number | null>(null)
   const [selectedRegionStatus, setSelectedRegionStatus] = useState<number | null>(null)

@@ -10,7 +10,7 @@ interface TicketSectionProps {
 const TicketSection = ({ imgList }: TicketSectionProps) => {
   return (
     <div>
-      <Subtitle isCenter={true}>티켓 오픈 </Subtitle>
+      <Subtitle>티켓 오픈 </Subtitle>
       <Margin bottom={40} />
       <TicketCard imgList={imgList} />
       <Margin bottom={130} />
