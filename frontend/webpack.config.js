@@ -1,6 +1,7 @@
 // 필요한 플러그인들을 require로 불러옵니다.
 const HtmlWebpackPlugin = require('html-webpack-plugin') // HTML 파일을 자동으로 생성해주는 플러그인
 const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 빌드 폴더를 정리해주는 플러그인
+const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path') // 경로 조작을 위한 Node.js 기본 모듈
 const webpack = require('webpack') // Webpack API를 사용하기 위해 불러옵니다.
 
