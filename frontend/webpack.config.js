@@ -15,6 +15,7 @@ module.exports = (env, argv) => {
     output: {
       path: path.join(__dirname, '/dist'), // 빌드 결과물을 저장할 폴더 경로 설정
       filename: '[name].js', // 출력 파일 이름 형식 설정
+      publicPath: prod ? 'https://your-cloudfront-url.com/' : '/',
     },
     devServer: {
       port: 3000, // 개발 서버 포트 번호 설정
@@ -56,6 +57,11 @@ module.exports = (env, argv) => {
             : false, // 개발 환경에서는 압축하지 않음
       }),
       new CleanWebpackPlugin(), // 빌드할 때마다 /dist 폴더를 정리
+      new CopyWebpackPlugin({
+        patterns: [
+          { from: 'public', to: 'dist' }, // public 폴더의 파일을 dist 폴더로 복사
+        ],
+      }),
     ],
   }
 }
