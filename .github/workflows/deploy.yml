@@ -12,16 +12,24 @@ jobs:
     steps:
       # 1. 코드 체크아웃
       - name: Checkout code
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3 # 최신 버전 사용
 
       # 2. Node.js 설정 (버전 20.0.0)
       - name: Set up Node.js
-        uses: actions/setup-node@v2
+        uses: actions/setup-node@v3 # 최신 버전 사용
         with:
           node-version: "20.0.0"
 
-      # 3. Yarn 의존성 설치
+      # 3. Yarn 캐시 사용 및 의존성 설치
       - name: Install dependencies with Yarn
+        uses: actions/cache@v3 # 캐시로 의존성 설치 속도 개선
+        with:
+          path: frontend/node_modules
+          key: ${{ runner.os }}-yarn-${{ hashFiles('**/yarn.lock') }} # yarn.lock 파일을 기준으로 캐시 키 생성
+          restore-keys: |
+            ${{ runner.os }}-yarn-
+
+      - name: Install dependencies
         run: yarn install
         working-directory: ./frontend # frontend 폴더로 이동하여 설치
 
@@ -36,11 +44,11 @@ jobs:
         with:
           args: --delete
         env:
-          AWS_S3_BUCKET: my-frontend-app # S3 버킷 이름
+          AWS_S3_BUCKET: devcourese-misson-2 # S3 버킷 이름
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          AWS_REGION: ap-northeast-2 # 필요한 리전
-          SOURCE_DIR: frontend/build # 빌드된 파일이 위치한 폴더
+          AWS_REGION: ap-northeast-2
+          SOURCE_DIR: frontend/dist # 빌드된 파일이 위치한 폴더
 
       # 6. CloudFront 캐시 무효화
       - name: Invalidate CloudFront Cache
