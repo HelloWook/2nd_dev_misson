@@ -17,10 +17,10 @@ interface useGetPerformanceParams {
 // 현재 날짜
 const currentDate = getDate(now)
 
-// 일주일 뒤 날짜
-const oneWeekLater = new Date(now)
-oneWeekLater.setDate(now.getDate() + 7)
-const dateWeekLater = getDate(oneWeekLater)
+// 한달 뒤 날짜
+const oneMonthLater = new Date(now)
+oneMonthLater.setDate(now.getDate() + 30)
+const dateMonthLater = getDate(oneMonthLater)
 
 /**
  * 공연 정보를 가져오는 커스텀 훅
@@ -31,7 +31,7 @@ const dateWeekLater = getDate(oneWeekLater)
  */
 const useGetPerformance = ({
   stdate = currentDate,
-  eddate = dateWeekLater,
+  eddate = dateMonthLater,
   openRun = '',
   rows = 10,
 }: useGetPerformanceParams) => {

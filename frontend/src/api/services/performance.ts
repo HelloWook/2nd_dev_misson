@@ -24,6 +24,7 @@ export const getPerformance = async (params: {
         rows: params.rows,
         ...(params.openRun && { openrun: params.openRun }),
         ...(params.genre && { shcate: params.genre }),
+        cpage: 1,
       },
     })
     return response.data
