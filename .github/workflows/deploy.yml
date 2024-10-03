@@ -35,7 +35,8 @@ jobs:
 
       # 4. 프로젝트 빌드
       - name: Build project
-        run: yarn build
+              run: |
+          REACT_APP_API_URL=${{ secrets.REACT_APP_API_URL }} yarn build
         working-directory: ./frontend # 빌드 명령어도 frontend 폴더에서 실행
 
       # 5. S3에 빌드 파일 배포
@@ -47,7 +48,6 @@ jobs:
           AWS_S3_BUCKET: devcourese-misson-2 # S3 버킷 이름
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-          REACT_APP_API_URL: ${{ secrets.REACT_APP_API_URL }}
           AWS_REGION: ap-northeast-2
           SOURCE_DIR: frontend/dist # 빌드된 파일이 위치한 폴더
 
