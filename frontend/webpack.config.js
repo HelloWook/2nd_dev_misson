@@ -4,6 +4,9 @@ const { CleanWebpackPlugin } = require('clean-webpack-plugin') // 빌드 폴더�
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 const path = require('path') // 경로 조작을 위한 Node.js 기본 모듈
 const webpack = require('webpack') // Webpack API를 사용하기 위해 불러옵니다.
+const dotenv = require('dotenv')
+const { JsxEmit } = require('typescript')
+dotenv.config()
 
 module.exports = (env, argv) => {
   // Webpack 설정을 함수로 정의합니다. env와 argv는 CLI에서 전달된 환경 변수와 인자를 나타냅니다.
@@ -39,6 +42,13 @@ module.exports = (env, argv) => {
           test: /\.css$/i, // .css 파일에 대해
           use: ['style-loader', 'css-loader'], // CSS 처리용 로더
         },
+        {
+          test: /\.(png|jpe?g|gif|svg)$/i, // 이미지 파일에 대해
+          type: 'asset/resource', // Webpack 5의 Asset Modules을 사용하여 처리
+          generator: {
+            filename: 'assets/[name][ext]', // 빌드된 파일 경로 설정
+          },
+        },
       ],
     },
     plugins: [
@@ -62,6 +72,7 @@ module.exports = (env, argv) => {
           { from: 'public', to: 'public' }, // public 폴더의 파일을 dist 폴더로 복사
         ],
       }),
+      new webpack.DefinePlugin({ 'process.env': JSON.stringify(process.env) }),
     ],
   }
 }

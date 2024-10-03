@@ -15,5 +15,5 @@ export default meta
 type Story = StoryObj<typeof Main>
 
 export const Default: Story = {
-  args: { PerformancPost: TestPerformanceArray, RecommendPost: tesImgUrlArray, TickPost: tesImgUrlArray },
+  args: { PerformancPost: TestPerformanceArray, RecommendPost: TestPerformanceArray, TickPost: TestPerformanceArray },
 }

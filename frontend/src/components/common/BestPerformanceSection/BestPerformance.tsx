@@ -2,14 +2,10 @@ import Margin from '@/components/atoms/Margin/Margin'
 import Subtitle from '@/components/atoms/Subtitle/Subtitle'
 import PostGruop from '@/components/molecule/PostGruop/PostGruop'
 import React from 'react'
-
-interface Post {
-  postTitle: string
-  postSummary: string
-}
+import { Performance } from '@/types/types'
 
 interface PostGruopStyleProps {
-  postGruop?: Post[]
+  postGruop?: Performance[]
 }
 
 const BestPerformance = ({ postGruop = [] }: PostGruopStyleProps) => {

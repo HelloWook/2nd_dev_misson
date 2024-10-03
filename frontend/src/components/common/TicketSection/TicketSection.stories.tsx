@@ -1,6 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
-import { TestUrl } from '@/Mock/Test'
+import { TestPerformanceArray, TestUrl } from '@/Mock/Test'
 
 import TicketSection from './TicketSection'
 
@@ -15,5 +15,5 @@ export default meta
 type Story = StoryObj<typeof TicketSection>
 
 export const Default: Story = {
-  args: { imgList: [TestUrl, TestUrl, TestUrl, TestUrl] },
+  args: { ticket: TestPerformanceArray },
 }

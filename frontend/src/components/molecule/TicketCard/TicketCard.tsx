@@ -1,6 +1,7 @@
 import Image from '@/components/atoms/Image/Image'
 import React from 'react'
 import styled from 'styled-components'
+import { Performance } from '@/types/types'
 
 const TicketCardStlye = styled.div`
   display: flex;
@@ -10,7 +11,7 @@ const TicketCardStlye = styled.div`
 `
 
 interface TicketCardProps {
-  imgList?: string[]
+  imgList?: Performance[]
 }
 
 const TicketCard = ({ imgList = [] }: TicketCardProps) => {
@@ -19,7 +20,7 @@ const TicketCard = ({ imgList = [] }: TicketCardProps) => {
       {imgList
         .filter((_, idx) => idx <= 1)
         .map((x, idx) => (
-          <Image key={idx} height={311} radius={30} width={530} src={x} />
+          <Image key={x.mt20id} height={311} radius={30} width={530} src={x.poster} />
         ))}
     </TicketCardStlye>
   )

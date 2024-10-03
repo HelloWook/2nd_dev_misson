@@ -19,15 +19,19 @@ const PostStyle = styled.div<{ width?: string }>`
 `
 
 const PostItemStyle = styled.div`
-  padding: 8px;
+  padding: 12px;
   display: flex;
   flex-direction: column;
+  height: 70px;
 `
 
 const PostTitleStyle = styled.h4`
   font-size: 20px;
   font-weight: 700;
   margin-bottom: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 `
 
 const PostSummaryStyle = styled.span`

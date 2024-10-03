@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from 'styled-components'
-
+import logoImage from '@/assets/logo2.png'
 interface LogoProps {
   width?: number | string
   height?: number | string
@@ -16,7 +16,7 @@ const LogoImage = styled.img<LogoProps>`
 const Logo = ({ width = 147, height = 39 }: LogoProps) => {
   return (
     <Logostyled>
-      <LogoImage src={'/Asset/logo2.png'} width={width} height={height} alt="로고 이미지" />
+      <LogoImage src={logoImage} width={width} height={height} alt="로고 이미지" />
     </Logostyled>
   )
 }

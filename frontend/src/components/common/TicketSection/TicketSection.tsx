@@ -1,18 +1,20 @@
 import Margin from '@/components/atoms/Margin/Margin'
 import Subtitle from '@/components/atoms/Subtitle/Subtitle'
 import TicketCard from '@/components/molecule/TicketCard/TicketCard'
+import { Performance } from '@/types/types'
+
 import React from 'react'
 
 interface TicketSectionProps {
-  imgList?: string[]
+  ticket?: Performance[]
 }
 
-const TicketSection = ({ imgList }: TicketSectionProps) => {
+const TicketSection = ({ ticket }: TicketSectionProps) => {
   return (
     <div>
       <Subtitle>티켓 오픈 </Subtitle>
       <Margin bottom={40} />
-      <TicketCard imgList={imgList} />
+      <TicketCard imgList={ticket} />
       <Margin bottom={130} />
     </div>
   )

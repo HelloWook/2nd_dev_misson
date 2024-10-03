@@ -6,7 +6,12 @@ import Banner from '@/components/atoms/Banner/Banner'
 import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import styled from 'styled-components'
-import Margin from '@/components/atoms/Margin/Margin'
+import bannerImage from '@/assets/Banner2.png'
+import { Performance } from '@/types/types'
+
+interface PostGruopStyleProps {
+  postGruop: Performance[]
+}
 
 const SlideStyle = styled.div`
   .slick-prev:before,
@@ -71,19 +76,17 @@ const settings: Settings = {
   prevArrow: <CustomPrevArrow />,
 }
 
-const BannerSlider = () => {
+const BannerSlider = ({ postGruop }: PostGruopStyleProps) => {
   return (
     <SlideStyle>
       <Slider {...settings}>
-        <div>
-          <Banner />
-        </div>
-        <div>
-          <Banner />
-        </div>
-        <div>
-          <Banner />
-        </div>
+        {postGruop.map((val, idx) => {
+          return (
+            <div key={idx}>
+              <Banner src={val.poster} />
+            </div>
+          )
+        })}
       </Slider>
     </SlideStyle>
   )

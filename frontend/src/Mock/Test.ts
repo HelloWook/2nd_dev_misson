@@ -1,8 +1,16 @@
 export const TestUrl: string = 'https://www.dollstore.co.kr/shopimages/dollstore/003001000293.jpg?1650275426'
 
-interface Post {
-  postTitle: string
-  postSummary: string
+interface Performance {
+  area: string
+  fcltynm: string
+  genrenm: string
+  mt20id: string
+  openrun: string
+  poster: string
+  prfnm: string
+  prfpdfrom: string
+  prfpdto: string
+  prfstate: string
 }
 
 interface postInfo {
@@ -27,11 +35,55 @@ interface RankProps {
   Ranks: Rank[]
 }
 
-export const TestPerformanceArray: Post[] = [
-  { postTitle: ' 반갑습니다.', postSummary: '즐겁다.' },
-  { postTitle: ' 반갑습니다.', postSummary: '즐겁다.' },
-  { postTitle: ' 반갑습니다.', postSummary: '즐겁다.' },
-  { postTitle: ' 반갑습니다.', postSummary: '즐겁다.' },
+export const TestPerformanceArray: Performance[] = [
+  {
+    area: '경상남도',
+    fcltynm: '남명아트홀',
+    genrenm: '서양음악(클래식)',
+    mt20id: 'PF249478',
+    openrun: 'N',
+    poster: 'http://www.kopis.or.kr/upload/pfmPoster/PF_PF249478_240923_104635.jpeg',
+    prfnm: '애니메이션 오페라 콘서트 [김해]',
+    prfpdfrom: '2024.09.21',
+    prfpdto: '2024.12.21',
+    prfstate: '공연중',
+  },
+  {
+    area: '경상남도',
+    fcltynm: '남명아트홀',
+    genrenm: '서양음악(클래식)',
+    mt20id: 'PF249478',
+    openrun: 'N',
+    poster: 'http://www.kopis.or.kr/upload/pfmPoster/PF_PF249478_240923_104635.jpeg',
+    prfnm: '애니메이션 오페라 콘서트 [김해]',
+    prfpdfrom: '2024.09.21',
+    prfpdto: '2024.12.21',
+    prfstate: '공연중',
+  },
+  {
+    area: '경상남도',
+    fcltynm: '남명아트홀',
+    genrenm: '서양음악(클래식)',
+    mt20id: 'PF249478',
+    openrun: 'N',
+    poster: 'http://www.kopis.or.kr/upload/pfmPoster/PF_PF249478_240923_104635.jpeg',
+    prfnm: '애니메이션 오페라 콘서트 [김해]',
+    prfpdfrom: '2024.09.21',
+    prfpdto: '2024.12.21',
+    prfstate: '공연중',
+  },
+  {
+    area: '경상남도',
+    fcltynm: '남명아트홀',
+    genrenm: '서양음악(클래식)',
+    mt20id: 'PF249478',
+    openrun: 'N',
+    poster: 'http://www.kopis.or.kr/upload/pfmPoster/PF_PF249478_240923_104635.jpeg',
+    prfnm: '애니메이션 오페라 콘서트 [김해]',
+    prfpdfrom: '2024.09.21',
+    prfpdto: '2024.12.21',
+    prfstate: '공연중',
+  },
 ]
 
 export const testRecommends: recommend[] = [

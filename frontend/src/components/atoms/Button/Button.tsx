@@ -9,6 +9,7 @@ interface ButtonProps {
   radius?: number
   variant?: 'primary' | 'secondary'
   isActive?: boolean
+  value?: string
 }
 
 const ButtonStyle = styled.button<ButtonProps>`
@@ -19,7 +20,7 @@ const ButtonStyle = styled.button<ButtonProps>`
   border: none;
   cursor: pointer;
   font-weight: bold;
-
+  white-space: nowrap;
   ${({ variant, isActive }) => {
     switch (variant) {
       case 'primary':
@@ -52,6 +53,7 @@ const Button = ({
   radius = 10,
   variant = 'primary',
   isActive = false,
+  value = '',
 }: ButtonProps) => {
   return (
     <ButtonStyle
@@ -61,6 +63,7 @@ const Button = ({
       radius={radius}
       variant={variant}
       isActive={isActive}
+      value={value}
     >
       {ButtonSummary}
     </ButtonStyle>

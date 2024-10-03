@@ -2,14 +2,16 @@ import React from 'react'
 import Input from '../../molecule/Input/Input'
 import Logo from '@/components/atoms/Logo/Logo'
 import styled from 'styled-components'
+import { Link } from 'react-router-dom'
 
 const HeaderStyle = styled.header`
   margin: auto;
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  width: 100%;
 `
 
 const HeaderItemStlye = styled.div`
-  width: 1054px;
+  max-width: 1054px;
   height: 93px;
   margin: auto;
   display: flex;
@@ -35,7 +37,9 @@ const Header = () => {
     <HeaderStyle>
       <HeaderItemStlye>
         <HeaderInfoItemStyle>
-          <Logo />
+          <Link to={''}>
+            <Logo />
+          </Link>
           <Input />
         </HeaderInfoItemStyle>
         <HeaderUlStyle>

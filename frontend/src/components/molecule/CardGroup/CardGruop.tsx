@@ -1,9 +1,10 @@
 import Image from '@/components/atoms/Image/Image'
 import React from 'react'
 import styled from 'styled-components'
+import { Performance } from '@/types/types'
 
 interface CardGroupProps {
-  imgList?: string[]
+  genrePost?: Performance[]
 }
 
 const CardGroupStyle = styled.div`
@@ -13,11 +14,11 @@ const CardGroupStyle = styled.div`
   justify-content: center;
 `
 
-const CardGroup = ({ imgList = [] }: CardGroupProps) => {
+const CardGroup = ({ genrePost = [] }: CardGroupProps) => {
   return (
     <CardGroupStyle>
-      {imgList.map((val, idx) => (
-        <Image key={idx} radius={30} width={231} height={311} src={val} />
+      {genrePost.map((val, idx) => (
+        <Image key={idx} radius={30} width={231} height={311} src={val.poster} />
       ))}
     </CardGroupStyle>
   )
