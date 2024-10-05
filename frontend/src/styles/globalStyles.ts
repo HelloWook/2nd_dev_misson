@@ -131,11 +131,11 @@ const GlobalStyles = createGlobalStyle`
   body {
     margin: 0;
     padding: 0;
+    overflow-y: scroll;
   }
   a{
     color: black;
     text-decoration-line: none;
-
   }
 `
 

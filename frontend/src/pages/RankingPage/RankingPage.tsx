@@ -1,12 +1,14 @@
+import Loading from '@/components/atoms/Loading/Loading'
 import Ranking from '@/components/Template/Ranking/Ranking'
 import useGetBoxOffice from '@/hooks/useGetBoxOffice'
 import React from 'react'
 
 const RankingPage = () => {
-  const { boxOffice, isLoading } = useGetBoxOffice({ dateTtype: 'month' })
+  const { boxOffice, isLoading, changeDate } = useGetBoxOffice({ dateTtype: 'month' })
   return (
     <div>
-      <Ranking boxoffieces={boxOffice}></Ranking>
+      {isLoading && <Loading></Loading>}
+      <Ranking boxoffieces={boxOffice} clickDateTypeEvent={changeDate}></Ranking>
     </div>
   )
 }

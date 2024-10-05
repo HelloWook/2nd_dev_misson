@@ -20,12 +20,12 @@ const currentDate = getDate(now)
 const useGetBoxOffice = ({ dateTtype }: useGetBoxOfficeParams) => {
   const [boxOffice, setBoxOffice] = useState<BoxOffice[]>([])
   const [isLoading, setIsLoading] = useState(true)
-  const [dateTtypeState, setDate] = useState<dateType>('day')
+  const [dateTtypeState, setTtypeState] = useState<dateType>(dateTtype)
 
   useEffect(() => {
     const fetchPerformance = async () => {
       try {
-        const response = await getBoxOffice({ date: currentDate, dateTtype: dateTtype })
+        const response = await getBoxOffice({ date: currentDate, dateTtype: dateTtypeState })
         console.log(response)
         setBoxOffice(response)
       } catch (err) {
@@ -36,9 +36,13 @@ const useGetBoxOffice = ({ dateTtype }: useGetBoxOfficeParams) => {
     }
 
     fetchPerformance()
-  }, [])
+  }, [dateTtypeState])
 
-  return { boxOffice, isLoading }
+  function changeDate(date: dateType) {
+    setTtypeState(date)
+  }
+
+  return { boxOffice, isLoading, changeDate }
 }
 
 export default useGetBoxOffice

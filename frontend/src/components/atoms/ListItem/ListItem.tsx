@@ -16,8 +16,9 @@ const ListItemTitleStyled = styled.h3`
   font-weight: 700;
 `
 const ListItemPlaceStyled = styled.span`
-  width: 162px;
+  width: 180px;
   font-size: 14px;
+  white-space: break-spaces;
 `
 const ListItemDateStyled = styled.span`
   width: 190px;

@@ -5,6 +5,7 @@ import 'slick-carousel/slick/slick-theme.css'
 import styled from 'styled-components'
 import SearchPost from '@/components/molecule/SearchPost/SearchPost'
 import { Performance } from '@/types/types'
+import { Link } from 'react-router-dom'
 
 const SlideStyle = styled.div`
   .slick-prev:before,
@@ -90,15 +91,21 @@ const RecommendSlider = ({ Perfomance = [] }: RecommendSliderProps) => {
     <SlideStyle>
       <Slider {...settings}>
         {Perfomance.map((val, idx) => (
-          <SearchPost
-            key={idx}
-            SearchPostTitle={val.prfnm}
-            SearchPostLocation={val.fcltynm}
-            SearchPostDate={val.genrenm}
-            imageSrc={val.poster}
-            width="250"
-            variant="secondary"
-          />
+          <Link
+            to={`/detail/${val.mt20id}`}
+            key={val.mt20id}
+            style={{ display: 'block', textDecoration: 'none', width: '704px' }}
+          >
+            <SearchPost
+              key={idx}
+              SearchPostTitle={val.prfnm}
+              SearchPostLocation={val.fcltynm}
+              SearchPostDate={val.genrenm}
+              imageSrc={val.poster}
+              width="250"
+              variant="secondary"
+            />
+          </Link>
         ))}
       </Slider>
     </SlideStyle>

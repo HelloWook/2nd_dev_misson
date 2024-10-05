@@ -1,6 +1,7 @@
 import Button from '@/components/atoms/Button/Button'
 import React, { useState } from 'react'
 import styled from 'styled-components'
+import { dateType } from '@/types/types'
 
 const ButtonGroupStyle = styled.div`
   display: flex;
@@ -8,10 +9,11 @@ const ButtonGroupStyle = styled.div`
   gap: 20px;
   justify-content: center;
 `
-
+// 함수 이름 레전드 ㅋㅋ
 interface ButtonGroupProps {
   clickEvent?: (param: string) => void
   category?: string[]
+  clickDateTypeEvent?: (param: dateType) => void
 }
 
 const ButtonGroup = ({
@@ -27,13 +29,18 @@ const ButtonGroup = ({
     '서커스/마술',
     '뮤지컬',
   ],
+  clickDateTypeEvent,
 }: ButtonGroupProps) => {
   const [activeButtonIndex, setActiveButtonIndex] = useState<number | null>(null)
 
-  const handleButtonClick = (index: number, value: string) => {
+  const handleButtonClick = (index: number, value?: string, valueDate?: dateType) => {
     setActiveButtonIndex(index)
-    if (clickEvent) {
+    if (clickEvent && value) {
       clickEvent(value)
+    }
+    if (clickDateTypeEvent && valueDate) {
+      console.log(valueDate)
+      clickDateTypeEvent(valueDate)
     }
   }
 
@@ -47,7 +54,7 @@ const ButtonGroup = ({
           height={50}
           radius={45}
           ButtonSummary={label}
-          clickEvent={() => handleButtonClick(index, category[index])}
+          clickEvent={() => handleButtonClick(index, category[index], category[index] as dateType)}
           isActive={activeButtonIndex === index}
         />
       ))}

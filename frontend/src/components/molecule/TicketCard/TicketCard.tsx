@@ -2,6 +2,7 @@ import Image from '@/components/atoms/Image/Image'
 import React from 'react'
 import styled from 'styled-components'
 import { Performance } from '@/types/types'
+import { Link } from 'react-router-dom'
 
 const TicketCardStlye = styled.div`
   display: flex;
@@ -19,8 +20,14 @@ const TicketCard = ({ imgList = [] }: TicketCardProps) => {
     <TicketCardStlye>
       {imgList
         .filter((_, idx) => idx <= 1)
-        .map((x, idx) => (
-          <Image key={x.mt20id} height={311} radius={30} width={530} src={x.poster} />
+        .map((val, idx) => (
+          <Link
+            to={`/detail/${val.mt20id}`}
+            key={val.mt20id}
+            style={{ display: 'block', textDecoration: 'none', width: '704px' }}
+          >
+            <Image height={311} radius={30} width={704} src={val.poster} />
+          </Link>
         ))}
     </TicketCardStlye>
   )

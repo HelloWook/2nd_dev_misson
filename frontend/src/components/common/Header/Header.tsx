@@ -35,7 +35,7 @@ const HeaderUlStyle = styled.ul`
 const Header = () => {
   const storedGenres = localStorage.getItem('selectedGenres')
   const parsedGenres = storedGenres ? JSON.parse(storedGenres) : null
-
+  console.log(parsedGenres)
   return (
     <HeaderStyle>
       <HeaderItemStlye>

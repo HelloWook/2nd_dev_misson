@@ -5,9 +5,11 @@ import Rank from '@/components/molecule/Rank/Rank'
 import React from 'react'
 import styled from 'styled-components'
 import { BoxOffice } from '@/types/types'
-
+import { dateType } from '@/types/types'
 interface RankingProps {
   boxoffieces: BoxOffice[]
+  clickEvent?: (param: string) => void
+  clickDateTypeEvent?: (param: dateType) => void
 }
 
 const RankingStlye = styled.div`
@@ -16,7 +18,7 @@ const RankingStlye = styled.div`
   margin: auto;
 `
 
-const Ranking = ({ boxoffieces }: RankingProps) => {
+const Ranking = ({ boxoffieces, clickDateTypeEvent, clickEvent }: RankingProps) => {
   return (
     <RankingStlye>
       <Margin bottom={80}></Margin>
@@ -24,7 +26,7 @@ const Ranking = ({ boxoffieces }: RankingProps) => {
       <Margin bottom={50}></Margin>
       <span>"전체 예매 순위를 확인하세요"</span>
       <Margin bottom={50}></Margin>
-      <ButtonGroup category={['day', 'week', 'month']}></ButtonGroup>
+      <ButtonGroup category={['day', 'week', 'month']} clickDateTypeEvent={clickDateTypeEvent}></ButtonGroup>
       <Margin bottom={50}></Margin>
       <Rank boxoffieces={boxoffieces} />
       <Margin bottom={50}></Margin>

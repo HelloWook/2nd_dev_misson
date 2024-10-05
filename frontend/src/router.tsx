@@ -1,4 +1,4 @@
-import { createBrowserRouter } from 'react-router-dom'
+import { createHashRouter } from 'react-router-dom'
 import Layout from '@/components/Layout/Layout'
 import MainPage from '@/pages/MainPage/MainPage'
 import DetailPage from '@/pages/DetailPage/DetailPage'
@@ -8,7 +8,7 @@ import RecommendPage from '@/pages/RecommendPage/RecommendPage'
 import ModalPage from '@/components/Template/ModalPage/ModalPage'
 import RankingPage from '@/pages/RankingPage/RankingPage'
 
-const router = createBrowserRouter([
+const router = createHashRouter([
   {
     path: '/',
     element: <Layout />,

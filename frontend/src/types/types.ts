@@ -70,3 +70,5 @@ export interface BoxOffice {
   area: string // 지역명
   rnum: number // 고유번호 또는 정렬 번호
 }
+
+export type dateType = 'day' | 'week' | 'month'

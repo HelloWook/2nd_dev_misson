@@ -1,14 +1,17 @@
 import React, { ReactNode } from 'react'
-
 import styled from '@emotion/styled'
 
-const OverlayStyled = styled.div`
+interface OverlayStyledProps {
+  variant?: 'default' | 'white'
+}
+
+const OverlayStyled = styled.div<OverlayStyledProps>`
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.5);
+  background: ${({ variant }) => (variant === 'white' ? 'rgba(255, 255, 255, 0.9)' : 'rgba(0, 0, 0, 0.5)')};
   display: flex;
   justify-content: center;
   align-items: center;
@@ -16,10 +19,11 @@ const OverlayStyled = styled.div`
 
 interface OverlayProps {
   children: ReactNode
+  variant?: 'default' | 'white'
 }
 
-const Overlay = ({ children }: OverlayProps) => {
-  return <OverlayStyled>{children}</OverlayStyled>
+const Overlay = ({ children, variant = 'default' }: OverlayProps) => {
+  return <OverlayStyled variant={variant}>{children}</OverlayStyled>
 }
 
 export default Overlay
