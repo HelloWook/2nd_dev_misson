@@ -40,3 +40,11 @@ export const Secondary: Story = {
     ButtonSummary: '공연',
   },
 }
+
+export const Third: Story = {
+  args: {
+    variant: 'third',
+    ButtonSummary: '공연',
+    height: 60,
+  },
+}

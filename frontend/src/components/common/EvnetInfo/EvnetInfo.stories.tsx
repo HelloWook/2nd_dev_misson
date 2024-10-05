@@ -2,6 +2,7 @@ import type { Meta, StoryObj } from '@storybook/react'
 const TestUrl: string = 'https://www.dollstore.co.kr/shopimages/dollstore/003001000293.jpg?1650275426'
 
 import EvnetInfo from './EvnetInfo'
+import { testEventInfo } from '@/Mock/Test'
 
 const meta: Meta<typeof EvnetInfo> = {
   component: EvnetInfo,
@@ -28,13 +29,6 @@ type Story = StoryObj<typeof EvnetInfo>
 
 export const Default: Story = {
   args: {
-    eventID: 1,
-    title: '폼폼푸린의 역습 ',
-    date: '2024.09.14 ~ 2025.03.03마이아트뮤지엄',
-    src: TestUrl,
-    eventInfo,
-    price: testPrice,
-    performanceTime: '금 19:30 / 토 14:00, 18:30 / 일 14:00',
-    ticketLink: 'https://www.naver.com',
+    ...testEventInfo,
   },
 }

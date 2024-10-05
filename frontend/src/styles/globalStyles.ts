@@ -132,6 +132,11 @@ const GlobalStyles = createGlobalStyle`
     margin: 0;
     padding: 0;
   }
+  a{
+    color: black;
+    text-decoration-line: none;
+
+  }
 `
 
 export default GlobalStyles

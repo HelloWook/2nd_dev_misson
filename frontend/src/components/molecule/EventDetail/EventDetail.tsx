@@ -1,23 +1,18 @@
 import React from 'react'
 import styled from 'styled-components'
 import Price from '@/components/atoms/Price/Price'
-import Link from '@/components/atoms/Link/Link'
-
-interface PriceItem {
-  seat: string
-  price: number
-}
-
-interface EventInfoItem {
-  title: string
-  value: string
-}
+import Anchor from '@/components/atoms/Link/Anchor'
 
 interface EventDetailProps {
-  eventInfo: EventInfoItem[]
-  prices: PriceItem[]
+  rate: string
+  viewTime: string
+  actor: string
+  price: string
   performanceTime: string
-  ticketLink: string
+  ticketLink: {
+    relatenm: string
+    relateurl: string
+  }
 }
 
 const EventDeatilSyled = styled.div`
@@ -31,7 +26,6 @@ const EventDeatilSyled = styled.div`
 const EventDetailInfoStyle = styled.div`
   width: 632px;
   display: flex;
-  flex-direction: column;
   gap: 50px;
 `
 
@@ -50,28 +44,32 @@ const EventDetailInfoSpan = styled.div`
   flex-grow: 1;
 `
 
-const EventDetail = ({ eventInfo = [], prices = [], performanceTime, ticketLink }: EventDetailProps) => {
+const EventDetail = ({ rate, actor, viewTime, price, performanceTime, ticketLink }: EventDetailProps) => {
   return (
     <EventDeatilSyled>
       <EventDetailInfoStyle>
-        {eventInfo.map((info, index) => (
-          <EventDetailSection key={index}>
-            <EventDetailInfoTitle>{info.title}</EventDetailInfoTitle>
-            <EventDetailInfoSpan>{info.value}</EventDetailInfoSpan>
-          </EventDetailSection>
-        ))}
-        <EventDetailSection>
-          <EventDetailInfoTitle>가격</EventDetailInfoTitle>
-          <Price prices={prices} />
-        </EventDetailSection>
+        <EventDetailInfoTitle>등급</EventDetailInfoTitle>
+        <EventDetailInfoSpan>{rate}</EventDetailInfoSpan>
       </EventDetailInfoStyle>
-      <EventDetailSection>
+      <EventDetailInfoStyle>
+        <EventDetailInfoTitle>관람시간</EventDetailInfoTitle>
+        <EventDetailInfoSpan>{viewTime}</EventDetailInfoSpan>
+      </EventDetailInfoStyle>
+      <EventDetailInfoStyle>
+        <EventDetailInfoTitle>출연</EventDetailInfoTitle>
+        <EventDetailInfoSpan>{actor}</EventDetailInfoSpan>
+      </EventDetailInfoStyle>
+      <EventDetailInfoStyle>
+        <EventDetailInfoTitle>가격</EventDetailInfoTitle>
+        <EventDetailInfoSpan>{price}</EventDetailInfoSpan>
+      </EventDetailInfoStyle>
+      <EventDetailInfoStyle>
         <EventDetailInfoTitle>공연시간</EventDetailInfoTitle>
         <EventDetailInfoSpan>{performanceTime}</EventDetailInfoSpan>
-      </EventDetailSection>
-      <Link href={ticketLink} padding="10">
+      </EventDetailInfoStyle>
+      <Anchor href={ticketLink.relateurl} padding="10">
         예매처 바로가기
-      </Link>
+      </Anchor>
     </EventDeatilSyled>
   )
 }

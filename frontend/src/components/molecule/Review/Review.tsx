@@ -21,13 +21,14 @@ const ReviewStarFormStyle = styled.div`
   justify-content: space-between;
 `
 
-const ReviewInputStlye = styled.input`
+const ReviewInputStyle = styled.textarea`
   width: 790px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   border-radius: 6px;
   padding: 12px;
   height: 100px;
   margin-left: 5px;
+  resize: none;
 `
 
 const Star = styled.input`
@@ -59,12 +60,26 @@ const ReviewStyle = styled.div`
   margin-bottom: 50px;
 `
 
-const Review = () => {
-  const [selectedValue, setSelectedValue] = useState<number | null>(null)
+interface ReviewProps {
+  onClick: (rating: number, comment: string) => void
+}
+
+const Review = ({ onClick }: ReviewProps) => {
+  const [inputSummary, setInputSummary] = useState<string>('')
+  const [selectedValue, setSelectedValue] = useState<number>(5)
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setInputSummary(event.target.value)
+  }
 
   const handleStarClick = (e: React.ChangeEvent<HTMLInputElement>) => {
     const value = parseInt(e.target.value)
     setSelectedValue(value)
+  }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    onClick(selectedValue, inputSummary)
   }
 
   return (
@@ -72,7 +87,7 @@ const Review = () => {
       <div>
         <ReviewTitleStyle>관람 리뷰</ReviewTitleStyle>
         <Margin bottom={10} />
-        <ReviewFormStyle>
+        <ReviewFormStyle onSubmit={handleSubmit}>
           <ReviewStarFormStyle>
             <StarRatingStyle>
               {[1, 2, 3, 4, 5].map((value) => (
@@ -85,10 +100,10 @@ const Review = () => {
                 />
               ))}
             </StarRatingStyle>
-            <Button width={180} height={48} ButtonSummary={'리뷰 작성하기'} />
+            <Button width={180} height={48} ButtonSummary={'리뷰 작성하기'} type="submit" />
           </ReviewStarFormStyle>
           <Margin bottom={30} />
-          <ReviewInputStlye placeholder="리뷰를 작성해주세요 " />
+          <ReviewInputStyle placeholder="리뷰를 작성해주세요" value={inputSummary} onChange={handleInputChange} />
         </ReviewFormStyle>
       </div>
     </ReviewStyle>

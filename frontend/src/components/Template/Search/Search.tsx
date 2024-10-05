@@ -1,17 +1,30 @@
 import React from 'react'
 import SearchResultSection from '@/components/common/SearchResultSection/SearchResultSection'
-import Header from '@/components/common/Header/Header'
 import Margin from '@/components/atoms/Margin/Margin'
-import Footer from '@/components/common/Footer/Footer'
+import { Performance } from '@/types/types'
 
-const Search = () => {
+interface SearchProps {
+  searchPosts: Performance[]
+  changeGenre: (param: string) => void
+  changeSale: (param: string) => void
+  changedate: (param: string) => void
+  loadMore: () => void
+  command: string
+}
+
+const Search = ({ searchPosts, changeGenre, changeSale, changedate, command, loadMore }: SearchProps) => {
   return (
     <div>
-      <Header />
       <Margin bottom={110} />
-      <SearchResultSection posts={[]} herf="www.naver.com"></SearchResultSection>
+      <SearchResultSection
+        command={command}
+        posts={searchPosts}
+        changeGenre={changeGenre}
+        changeSale={changeSale}
+        changedate={changedate}
+        loadMore={loadMore}
+      ></SearchResultSection>
       <Margin top={110} />
-      <Footer />
     </div>
   )
 }

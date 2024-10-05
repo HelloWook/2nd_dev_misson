@@ -43,10 +43,18 @@ const Header = () => {
           <Input />
         </HeaderInfoItemStyle>
         <HeaderUlStyle>
-          <li>홈</li>
-          <li>추천</li>
-          <li>랭킹</li>
-          <li>시설</li>
+          <Link to={'/'}>
+            <li>홈</li>
+          </Link>
+          <Link to={'/'}>
+            <li>추천</li>
+          </Link>
+          <Link to={'/'}>
+            <li>랭킹</li>
+          </Link>
+          <Link to={'/'}>
+            <li>시설</li>
+          </Link>
         </HeaderUlStyle>
       </HeaderItemStlye>
     </HeaderStyle>

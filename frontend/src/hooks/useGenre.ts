@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react'
+import { useState } from 'react'
 
 // 장르 상태를 관리하는 훅
 const useGenre = () => {

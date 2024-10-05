@@ -29,8 +29,7 @@ const NoteTitleStyle = styled.h4`
 
 const NoteSummaryStyle = styled.span`
   font-size: 20px;
-  max-width: 500%;
-  word-break: break-word;
+  white-space: pre-wrap;
 `
 
 const DetailNote = ({ note, noteSrc }: DetailNoteProps): JSX.Element => {

@@ -12,12 +12,14 @@ const DetailSpanStyle = styled.span`
   margin-top: 15px;
 `
 
+const DetailTitleStlye = styled.div``
+
 const DetailTitle = ({ title, date }: DetailTitleProps) => {
   return (
-    <div>
+    <DetailTitleStlye>
       <Title>{title}</Title>
       <DetailSpanStyle>{date}</DetailSpanStyle>
-    </div>
+    </DetailTitleStlye>
   )
 }
 

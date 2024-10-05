@@ -1,4 +1,18 @@
 export const TestUrl: string = 'https://www.dollstore.co.kr/shopimages/dollstore/003001000293.jpg?1650275426'
+interface EventInfoProps {
+  title: string
+  date: string
+  src: string
+  rate: string
+  viewTime: string
+  actor: string
+  price: string
+  performanceTime: string
+  ticketLink: {
+    relatenm: string
+    relateurl: string
+  }
+}
 
 interface Performance {
   area: string
@@ -191,3 +205,18 @@ export const testRank: Rank[] = [
     src: 'https://www.dollstore.co.kr/shopimages/dollstore/003001000293.jpg?1650275426',
   },
 ]
+
+export const testEventInfo: EventInfoProps = {
+  title: '애니메이션 오페라 콘서트 [김해]',
+  date: '2024.09.21 ~ 2024.12.21 남명아트홀',
+  src: 'http://www.kopis.or.kr/upload/pfmPoster/PF_PF249478_240923_104635.jpeg',
+  rate: '전체 관람가',
+  viewTime: '1시간',
+  actor: '윤보영, 박예은, 김성',
+  price: '전석 20,000원',
+  performanceTime: '토요일(17:00)',
+  ticketLink: {
+    relatenm: '즐겁다',
+    relateurl: 'https://booking.naver.com/booking/12/bizes/497531',
+  },
+}

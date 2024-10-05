@@ -1,14 +1,14 @@
 import React, { ReactNode } from 'react'
 import styled from 'styled-components'
 
-interface LinkProps {
+interface AnchorProps {
   children: ReactNode
   href: string
   padding?: string
   variant?: 'primary' | 'secondary'
 }
 
-const LinkStyle = styled.a<LinkProps>`
+const AnchorStyle = styled.a<AnchorProps>`
   display: block;
   border: 1px solid black;
   padding: 15px ${(props) => (props.padding !== undefined ? `${props.padding}px` : '181px')};
@@ -22,12 +22,12 @@ const LinkStyle = styled.a<LinkProps>`
   text-align: center;
 `
 
-const Link = ({ children, href, padding, variant = 'primary' }: LinkProps) => {
+const Anchor = ({ children, href, padding, variant = 'primary' }: AnchorProps) => {
   return (
-    <LinkStyle href={href} padding={padding} variant={variant}>
+    <AnchorStyle href={href} padding={padding} variant={variant}>
       {children}
-    </LinkStyle>
+    </AnchorStyle>
   )
 }
 
-export default Link
+export default Anchor

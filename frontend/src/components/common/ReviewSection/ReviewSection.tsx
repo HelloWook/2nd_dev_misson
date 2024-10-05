@@ -2,15 +2,11 @@ import CommentSlider from '@/components/molecule/CommentSlider/CommentSlider'
 import Review from '@/components/molecule/Review/Review'
 import React from 'react'
 import styled from 'styled-components'
-
-interface CommentInfo {
-  user: string
-  rating: number
-  comment: string
-}
+import { CommentInfo } from '@/types/types'
 
 interface ReviewSectionProps {
   comments: CommentInfo[]
+  onClick: (rating: number, comment: string) => void
 }
 
 const ReviewSectionStyle = styled.div`
@@ -18,11 +14,11 @@ const ReviewSectionStyle = styled.div`
   margin: auto;
 `
 
-const ReviewSection = ({ comments }: ReviewSectionProps) => {
+const ReviewSection = ({ comments, onClick }: ReviewSectionProps) => {
   return (
     <ReviewSectionStyle>
-      <Review />
-      <CommentSlider comments={comments} />
+      <Review onClick={onClick} />
+      {comments.length > 0 ? <CommentSlider comments={comments} /> : ''}
     </ReviewSectionStyle>
   )
 }

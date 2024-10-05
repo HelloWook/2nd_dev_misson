@@ -13,8 +13,11 @@ export const getPerformance = async (params: {
   stdate: string
   eddate: string
   rows: number
+  command?: string
   openRun?: string
   genre?: string
+  sale?: string
+  page?: number
 }) => {
   try {
     const response = await api.get('/performances', {
@@ -23,10 +26,26 @@ export const getPerformance = async (params: {
         eddate: params.eddate,
         rows: params.rows,
         ...(params.openRun && { openrun: params.openRun }),
+        ...(params.command && { shprfnm: params.command }),
         ...(params.genre && { shcate: params.genre }),
-        cpage: 1,
+        ...(params.sale && { prfstate: params.sale }),
+        cpage: params.page,
       },
     })
+    return response.data
+  } catch (error) {
+    console.error('데이터를 불러오는데 실패했습니다.:', error)
+    throw error
+  }
+}
+
+/**
+ * 상세 공연 정보를 불러온다
+ * @param postId  공연 id
+ */
+export const getDetailPerformance = async (params: { postId: string }) => {
+  try {
+    const response = await api.get(`/performance/${[params.postId]}`)
     return response.data
   } catch (error) {
     console.error('데이터를 불러오는데 실패했습니다.:', error)

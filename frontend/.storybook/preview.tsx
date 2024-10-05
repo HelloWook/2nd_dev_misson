@@ -1,6 +1,8 @@
 import type { Preview } from '@storybook/react'
 import React from 'react'
 import GlobalStyles from '../src/styles/globalStyles'
+import { RouterProvider } from 'react-router-dom'
+import router from '../src/router'
 
 const preview: Preview = {
   parameters: {

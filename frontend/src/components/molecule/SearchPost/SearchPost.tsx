@@ -19,6 +19,7 @@ const SearchPostStyle = styled.div<{ width: string }>`
   display: flex;
   flex-direction: column;
   height: 290px;
+  text-align: left;
 `
 
 const SearchPostItemStyle = styled.div`
@@ -32,7 +33,9 @@ const SearchPostItemStyle = styled.div`
 const SearchPostTitleStyle = styled.h4`
   font-size: 16px;
   font-weight: 700;
+  overflow: hidden;
   white-space: nowrap;
+  text-overflow: ellipsis;
 `
 
 const SearchPostLocationDate = styled.span`

@@ -1,76 +1,55 @@
 import Margin from '@/components/atoms/Margin/Margin'
 import EventInfo from '@/components/common/EvnetInfo/EvnetInfo'
-import Footer from '@/components/common/Footer/Footer'
-import Header from '@/components/common/Header/Header'
 import ReviewSection from '@/components/common/ReviewSection/ReviewSection'
 import DetailNote from '@/components/molecule/DetailNote/DetailNote'
 import React from 'react'
 import styled from 'styled-components'
+import { PerformanceDetail, CommentInfo } from '@/types/types'
 
-interface PriceItem {
-  seat: string
-  price: number
-}
-
-interface EventInfoItem {
-  title: string
-  value: string
-}
-
-interface CommentInfo {
-  user: string
-  rating: number
-  comment: string
-}
-
-interface DetailProps {
-  eventID: number
-  title: string
-  date: string
-  src: string
-  eventInfo: EventInfoItem[]
-  price: PriceItem[]
-  performanceTime: string
-  ticketLink: string
-  note: string
-  noteSrc: string
+interface DetailProps extends PerformanceDetail {
   comments: CommentInfo[]
+  onClick: (rating: number, comment: string) => void
 }
-
-const DetailStyle = styled.div``
 
 const Detail = ({
-  eventID,
-  title,
-  date,
-  src,
-  eventInfo,
-  price,
-  performanceTime,
-  ticketLink,
-  note,
-  noteSrc,
-  comments = [],
+  prfnm,
+  prfpdfrom,
+  prfpdto,
+  fcltynm,
+  prfcast,
+  prfruntime,
+  prfage,
+  pcseguidance,
+  poster,
+  sty,
+  styurls,
+  dtguidance,
+  relates,
+  comments,
+  onClick,
 }: DetailProps) => {
   return (
-    <DetailStyle>
-      <Header />
+    <div>
       <EventInfo
-        eventID={eventID}
-        title={title}
-        date={date}
-        src={src}
-        eventInfo={eventInfo}
-        price={price}
-        performanceTime={performanceTime}
-        ticketLink={ticketLink}
+        title={prfnm}
+        date={`${prfpdfrom}  ~ ${prfpdto} ${fcltynm}`}
+        src={poster}
+        actor={prfcast}
+        rate={prfage}
+        viewTime={prfruntime}
+        price={pcseguidance}
+        performanceTime={dtguidance}
+        ticketLink={relates}
       />
-      <DetailNote note={note} noteSrc={noteSrc} />
-      <ReviewSection comments={comments} />
+
       <Margin top={110} />
-      <Footer />
-    </DetailStyle>
+      <DetailNote note={sty} noteSrc={styurls && poster} />
+      <ReviewSection comments={comments} onClick={onClick} />
+      <Margin bottom={60} />
+    </div>
   )
 }
 
 export default Detail
+
+//{<ReviewSection comments={comments} />}

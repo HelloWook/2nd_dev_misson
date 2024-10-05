@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
 import SearchIcon from '@mui/icons-material/Search'
+import { Link, useNavigate } from 'react-router-dom'
 
-const InputWrapper = styled.div`
+const InputWrapper = styled.form`
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -20,10 +21,26 @@ const InputStyled = styled.input`
 `
 
 const Input = () => {
+  const [searchCommand, setSearchCommand] = useState<string>('')
+  const navigate = useNavigate()
+
+  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    setSearchCommand(event.target.value)
+  }
+
+  const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    if (searchCommand.trim()) {
+      navigate(`/search/${searchCommand}`)
+    }
+  }
+
   return (
-    <InputWrapper>
-      <InputStyled placeholder="공연/정보를 검색합니다." />
-      <SearchIcon style={{ fontSize: 24, color: 'gray' }} />
+    <InputWrapper onSubmit={handleSubmit}>
+      <InputStyled placeholder="공연/정보를 검색합니다." onChange={handleInputChange} value={searchCommand} />
+      <button type="submit" style={{ background: 'none', border: 'none', cursor: 'pointer' }}>
+        <SearchIcon style={{ fontSize: 24, color: 'gray' }} />
+      </button>
     </InputWrapper>
   )
 }

@@ -9,7 +9,7 @@ const FilterStlye = styled.div`
   border: 1px solid rgba(0, 0, 0, 0.1);
   list-style: none;
   width: 310px;
-  height: 980px;
+  height: 900px;
 `
 
 const FilterTitlteStyle = styled.h2`
@@ -52,23 +52,39 @@ const FilterButtonListStlye = styled.ul`
   gap: 10px;
   flex-wrap: wrap;
 `
+const genres = ['연극', '무용', '대중무용', '서양음악', '한국음악', '대중음악', '복합', '서커스마술', '뮤지컬']
+const sales = ['공연예정', '공연중', '공연완료']
+interface filterProps {
+  changeGenre: (param: string) => void
+  changeSale: (param: string) => void
+  changedate: (param: string) => void
+}
 
-const Filter: React.FC = () => {
+const Filter = ({ changeGenre, changeSale, changedate }: filterProps) => {
   // 색상 변경 상태
   const [selectedSaleStatus, setSelectedSaleStatus] = useState<number | null>(null)
-  const [selectedDateStatus, setSelectedDateStatus] = useState<number | null>(null)
-  const [selectedRegionStatus, setSelectedRegionStatus] = useState<number | null>(null)
+  const [selectedGenreStatus, setSelectedGenreStatus] = useState<number | null>(null)
 
   const handleSaleStatusClick = (index: number): void => {
     setSelectedSaleStatus(index === selectedSaleStatus ? null : index)
   }
 
   const handleDateStatusClick = (index: number): void => {
-    setSelectedDateStatus(index === selectedDateStatus ? null : index)
+    setSelectedGenreStatus(index === selectedGenreStatus ? null : index)
   }
 
-  const handleRegionStatusClick = (index: number): void => {
-    setSelectedRegionStatus(index === selectedRegionStatus ? null : index)
+  const reset = (): void => {
+    setSelectedSaleStatus(null)
+    setSelectedGenreStatus(null)
+  }
+
+  const search = (): void => {
+    const genre = selectedGenreStatus !== null ? genres[selectedGenreStatus] : ''
+    const sale = selectedSaleStatus !== null ? sales[selectedSaleStatus] : ''
+    console.log(genre)
+    console.log(sale)
+    changeGenre(genre)
+    changeSale(sale)
   }
 
   return (
@@ -78,7 +94,7 @@ const Filter: React.FC = () => {
       <FilterSubTitlteStlye>판매 상태</FilterSubTitlteStlye>
       <FilterSpaneStlye>(하나만 선택 가능)</FilterSpaneStlye>
       <FilterButtonListStlye>
-        {['장르1', '장르2', '장르3'].map((label, index) => (
+        {sales.map((label, index) => (
           <li key={index}>
             <FilterButtonStlye $active={selectedSaleStatus === index} onClick={() => handleSaleStatusClick(index)}>
               {label}
@@ -87,11 +103,11 @@ const Filter: React.FC = () => {
         ))}
       </FilterButtonListStlye>
       <Line />
-      <FilterSubTitlteStlye>판매 상태</FilterSubTitlteStlye>
+      <FilterSubTitlteStlye>장르 상태</FilterSubTitlteStlye>
       <FilterButtonListStlye>
-        {['판매 중', '판매 예정', '판매 종료'].map((label, index) => (
+        {genres.map((label, index) => (
           <li key={index}>
-            <FilterButtonStlye $active={selectedDateStatus === index} onClick={() => handleDateStatusClick(index)}>
+            <FilterButtonStlye $active={selectedGenreStatus === index} onClick={() => handleDateStatusClick(index)}>
               {label}
             </FilterButtonStlye>
           </li>
@@ -101,20 +117,9 @@ const Filter: React.FC = () => {
       <FilterSubTitlteStlye>날짜</FilterSubTitlteStlye>
       <Calendar />
       <Line />
-      <FilterSubTitlteStlye>지역</FilterSubTitlteStlye>
-      <FilterButtonListStlye>
-        {['판매 중', '판매 예정', '판매 종료', '판매 중', '판매 예정'].map((label, index) => (
-          <li key={index}>
-            <FilterButtonStlye $active={selectedRegionStatus === index} onClick={() => handleRegionStatusClick(index)}>
-              {label}
-            </FilterButtonStlye>
-          </li>
-        ))}
-      </FilterButtonListStlye>
-      <Line />
       <ButtonGroup>
-        <Button width={100} ButtonSummary="초기화" variant="secondary"></Button>
-        <Button width={150} ButtonSummary="초기화" variant="primary"></Button>
+        <Button width={100} ButtonSummary="초기화" variant="secondary" clickEvent={reset}></Button>
+        <Button width={150} ButtonSummary="검색" variant="primary" clickEvent={search}></Button>
       </ButtonGroup>
     </FilterStlye>
   )

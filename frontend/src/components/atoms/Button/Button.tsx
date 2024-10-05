@@ -7,9 +7,10 @@ interface ButtonProps {
   width?: number
   height?: number
   radius?: number
-  variant?: 'primary' | 'secondary'
+  variant?: 'primary' | 'secondary' | 'third'
   isActive?: boolean
   value?: string
+  type?: string
 }
 
 const ButtonStyle = styled.button<ButtonProps>`
@@ -34,9 +35,17 @@ const ButtonStyle = styled.button<ButtonProps>`
           color: ${isActive ? 'white' : 'black'};
           border: ${isActive ? 'none' : '1px solid rgba(0, 0, 0, 0.1)'};
         `
+      case 'third':
+        return css`
+          background-color: ${isActive ? '#8e43e7' : 'white'};
+          color: ${isActive ? 'white' : 'black'};
+          border: ${isActive ? 'none' : '1px solid #8e43e7'};
+          width: 100%;
+          font-size: 22px;
+        `
       default:
         return css`
-          background-color: #8e43e7;
+          background-: #8e43e7;
           color: white;
         `
     }
@@ -45,15 +54,14 @@ const ButtonStyle = styled.button<ButtonProps>`
 
 const Button = ({
   ButtonSummary,
-  clickEvent = () => {
-    alert('클릭')
-  },
+  clickEvent,
   width = 120,
   height = 48,
   radius = 10,
   variant = 'primary',
   isActive = false,
   value = '',
+  type,
 }: ButtonProps) => {
   return (
     <ButtonStyle
@@ -64,6 +72,7 @@ const Button = ({
       variant={variant}
       isActive={isActive}
       value={value}
+      type={type}
     >
       {ButtonSummary}
     </ButtonStyle>

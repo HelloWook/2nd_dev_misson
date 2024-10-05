@@ -4,6 +4,7 @@ import Filter from '@/components/molecule/Filter/Filter'
 import SearchPostGroup from '@/components/molecule/SearchPostGroup/SearchPostGroup'
 import React from 'react'
 import styled from 'styled-components'
+import { Performance } from '@/types/types'
 
 const SearchResultSectionStyle = styled.div`
   text-align: center;
@@ -18,28 +19,32 @@ const SectionStyle = styled.div`
   gap: 80px;
 `
 
-interface SearchPostProps {
-  SearchPostTitle: string
-  SearchPostLocation: string
-  SearchPostDate: string
-  width?: string
-}
-
 interface SearchResultSectionProps {
-  posts: SearchPostProps[]
-  herf: string
+  posts: Performance[]
+  changeGenre: (param: string) => void
+  changeSale: (param: string) => void
+  changedate: (param: string) => void
+  command: string
+  loadMore: () => void
 }
 
-const SearchResultSection = ({ posts = [], herf = 'www.naver.com' }: SearchResultSectionProps) => {
+const SearchResultSection = ({
+  command,
+  posts = [],
+  changeGenre,
+  changeSale,
+  changedate,
+  loadMore,
+}: SearchResultSectionProps) => {
   return (
     <SearchResultSectionStyle>
-      <Subtitle>{'공연 검색 결과'}</Subtitle>
+      <Subtitle>{`${command} 검색 결과`}</Subtitle>
       <Margin bottom={20} />
-      <SearchResultSpanStyle>‘공연’ 검색 결과를 확인해보세요</SearchResultSpanStyle>
+      <SearchResultSpanStyle>{`${command} 검색 결과를 확인해보세요`}</SearchResultSpanStyle>
       <Margin bottom={70} />
       <SectionStyle>
-        <Filter />
-        <SearchPostGroup posts={posts} herf={herf} />
+        <Filter changeGenre={changeGenre} changeSale={changeSale} changedate={changedate} />
+        <SearchPostGroup posts={posts} loadMore={loadMore} />
       </SectionStyle>
     </SearchResultSectionStyle>
   )
