@@ -1,3 +1,4 @@
+import Loading from '@/components/atoms/Loading/Loading'
 import Detail from '@/components/Template/Detail/Detail'
 import useComment from '@/hooks/useComment'
 import useGetDetailPerfromance from '@/hooks/useGetDetailPerfromance'
@@ -10,7 +11,7 @@ const DetailPage = () => {
   const { comments, postComment } = useComment({ postId: postId as string })
 
   if (isLoading) {
-    return <div>Loading...</div>
+    return <Loading />
   }
 
   if (!detailPerformace) {
