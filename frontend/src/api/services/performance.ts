@@ -52,3 +52,29 @@ export const getDetailPerformance = async (params: { postId: string }) => {
     throw error
   }
 }
+
+/**
+ * 추천 공연을 불러온다.
+ */
+export const getRecommedPerformance = async () => {
+  try {
+    const response = await api.get(`/popular-by-genre`)
+    return response.data
+  } catch (error) {
+    console.error('데이터를 불러오는데 실패했습니다.:', error)
+  }
+}
+
+export const getBoxOffice = async (params: { dateTtype: string; date: string }) => {
+  try {
+    const response = await api.get(`/boxoffice`, {
+      params: {
+        ststype: params.dateTtype,
+        date: params.date,
+      },
+    })
+    return response.data
+  } catch (error) {
+    console.error('데이터를 불러오는데 실패했습니다.:', error)
+  }
+}

@@ -33,6 +33,9 @@ const HeaderUlStyle = styled.ul`
 `
 
 const Header = () => {
+  const storedGenres = localStorage.getItem('selectedGenres')
+  const parsedGenres = storedGenres ? JSON.parse(storedGenres) : null
+
   return (
     <HeaderStyle>
       <HeaderItemStlye>
@@ -46,10 +49,10 @@ const Header = () => {
           <Link to={'/'}>
             <li>홈</li>
           </Link>
-          <Link to={'/'}>
+          <Link to={`${parsedGenres === null ? '/select' : '/recommend'}`}>
             <li>추천</li>
           </Link>
-          <Link to={'/'}>
+          <Link to={'/rank'}>
             <li>랭킹</li>
           </Link>
           <Link to={'/'}>

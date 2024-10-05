@@ -15,7 +15,7 @@ const SearchPostStyle = styled.div<{ width: string }>`
   border-radius: 6px;
   border: 1px solid rgba(0, 0, 0, 0.1);
   overflow: hidden;
-  width: ${({ width }) => width};
+  width: ${({ width }) => width}px;
   display: flex;
   flex-direction: column;
   height: 290px;
@@ -62,7 +62,7 @@ const SearchPost = ({
   SearchPostTitle,
   SearchPostLocation,
   SearchPostDate,
-  width = '230px',
+  width = '200px',
   variant = 'primary',
   imageSrc,
 }: SearchPostProps) => {

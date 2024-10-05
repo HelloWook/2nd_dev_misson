@@ -1,5 +1,6 @@
 import React from 'react'
 import type { Meta, StoryObj } from '@storybook/react'
+import { TestPerformanceArray, testRecommends } from '@/Mock/Test'
 
 import RecommendSlider from './RecommendSlider'
 
@@ -15,12 +16,6 @@ type Story = StoryObj<typeof RecommendSlider>
 
 export const Default: Story = {
   args: {
-    posts: [
-      { SearchPostTitle: '사랑해', SearchPostDate: '내일', SearchPostLocation: '즐겁다' },
-      { SearchPostTitle: '사랑해', SearchPostDate: '내일', SearchPostLocation: '즐겁다' },
-      { SearchPostTitle: '사랑해', SearchPostDate: '내일', SearchPostLocation: '즐겁다' },
-      { SearchPostTitle: '사랑해', SearchPostDate: '내일', SearchPostLocation: '즐겁다' },
-      { SearchPostTitle: '사랑해', SearchPostDate: '내일', SearchPostLocation: '즐겁다' },
-    ],
+    Perfomance: TestPerformanceArray,
   },
 }

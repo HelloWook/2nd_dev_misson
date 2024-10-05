@@ -1,33 +1,34 @@
-import Margin from '@/components/atoms/Margin/Margin'
-import Footer from '@/components/common/Footer/Footer'
-import Header from '@/components/common/Header/Header'
+import Modal from '@/components/common/Modal/Modal'
 import RecommendSection from '@/components/common/RecommedSection/RecommedSection'
-import React from 'react'
-import styled from 'styled-components'
+import useGetPerformance from '@/hooks/useGetPerfromance'
 
-interface postInfo {
-  SearchPostTitle: string
-  SearchPostLocation: string
-  SearchPostDate: string
-}
+const Recommend = () => {
+  const storedGenres = localStorage.getItem('selectedGenres')
+  const parsedGenres = storedGenres ? JSON.parse(storedGenres) : null
 
-interface recommend {
-  title: string
-  posts: postInfo[]
-}
+  const { Performances: firstGenrePerfomance } = useGetPerformance({
+    rows: 10,
+    genreParam: parsedGenres[0],
+  })
+  const { Performances: secondGenrePerfomance } = useGetPerformance({
+    rows: 10,
+    genreParam: parsedGenres[1],
+  })
+  const { Performances: thirdGenrePerfomance } = useGetPerformance({
+    rows: 10,
+    genreParam: parsedGenres[2],
+  })
 
-interface RecommendProps {
-  recommends: recommend[]
-}
-
-const Recommend = ({ recommends }: RecommendProps) => {
   return (
     <div>
-      <Header />
-      <Margin bottom={110} />
-      <RecommendSection recommends={recommends} />
-      <Margin top={110} />
-      <Footer />
+      <RecommendSection
+        firstGenre={parsedGenres[0]}
+        secondGenre={parsedGenres[1]}
+        thirdGenre={parsedGenres[2]}
+        firstGenrePerfomance={firstGenrePerfomance}
+        secondGenrePerfomance={secondGenrePerfomance}
+        thirdGenrePerfomance={thirdGenrePerfomance}
+      />
     </div>
   )
 }

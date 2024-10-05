@@ -4,6 +4,9 @@ import MainPage from '@/pages/MainPage/MainPage'
 import DetailPage from '@/pages/DetailPage/DetailPage'
 import React from 'react'
 import SaerchPage from '@/pages/SaerchPage/SaerchPage'
+import RecommendPage from '@/pages/RecommendPage/RecommendPage'
+import ModalPage from '@/components/Template/ModalPage/ModalPage'
+import RankingPage from '@/pages/RankingPage/RankingPage'
 
 const router = createBrowserRouter([
   {
@@ -21,6 +24,18 @@ const router = createBrowserRouter([
       {
         path: '/search/:command',
         element: <SaerchPage />,
+      },
+      {
+        path: '/recommend',
+        element: <RecommendPage />,
+      },
+      {
+        path: '/rank',
+        element: <RankingPage />,
+      },
+      {
+        path: '/select',
+        element: <ModalPage />,
       },
     ],
   },

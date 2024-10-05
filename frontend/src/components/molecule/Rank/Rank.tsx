@@ -3,16 +3,11 @@ import styled from 'styled-components'
 import Post from '@/components/molecule/Post/Post'
 import ListItem from '@/components/atoms/ListItem/ListItem'
 import Margin from '@/components/atoms/Margin/Margin'
-
-interface Rank {
-  RankTitle: string
-  RankSummary: string
-  RankDate: string
-  src: string
-}
+import { BoxOffice } from '@/types/types'
+import { Link } from 'react-router-dom'
 
 interface RankProps {
-  Ranks: Rank[]
+  boxoffieces: BoxOffice[]
 }
 
 const RankStlye = styled.div`
@@ -39,26 +34,29 @@ const RanListkNumberStyle = styled.span`
   font-size: 50px;
 `
 
-const Rank = ({ Ranks = [] }: RankProps) => {
+const Rank = ({ boxoffieces = [] }: RankProps) => {
   return (
     <RankStlye>
       <TopRankStlye>
-        {Ranks.slice(0, 3).map((rank, idx) => (
-          <Post key={idx} postTitle={rank.RankTitle} postSummary={rank.RankSummary} src={rank.src} />
+        {boxoffieces.slice(0, 3).map((val, idx) => (
+          <Link to={`/detail/${val.mt20id}`} key={idx}>
+            <Post postTitle={val.prfnm} postSummary={val.fcltynm} src={`http://www.kopis.or.kr/${val.poster}`} />
+          </Link>
         ))}
       </TopRankStlye>
       <Margin bottom={100} />
       <div>
-        {Ranks.slice(3, 11).map((rank, idx) => (
-          <RanListkStyle>
+        {boxoffieces.slice(3, 11).map((val, idx) => (
+          <RanListkStyle key={idx}>
             <RanListkNumberStyle>{idx + 3}</RanListkNumberStyle>
-            <ListItem
-              key={idx}
-              ListItemTitle={rank.RankTitle}
-              ListItemPlace={rank.RankSummary}
-              ListItemDate={rank.RankDate}
-              src={rank.src}
-            />
+            <Link to={`/detail/${val.mt20id}`}>
+              <ListItem
+                ListItemTitle={val.prfnm}
+                ListItemPlace={val.fcltynm}
+                ListItemDate={val.prfpd}
+                src={`http://www.kopis.or.kr/${val.poster}`}
+              />
+            </Link>
           </RanListkStyle>
         ))}
       </div>

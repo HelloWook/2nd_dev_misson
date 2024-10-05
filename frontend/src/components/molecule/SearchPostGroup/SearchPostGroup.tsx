@@ -8,8 +8,6 @@ import { Link } from 'react-router-dom'
 import Button from '@/components/atoms/Button/Button'
 
 const SearchPostGroupStyle = styled.div`
-  width: 800px;
-  height: 980px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -19,7 +17,7 @@ const SearchPostsStyle = styled.div`
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 20px;
-  width: 100%;
+  width: 880px;
 `
 
 interface SearchPostGroupProps {
@@ -38,12 +36,16 @@ const SearchPostGroup = ({ posts = [], loadMore }: SearchPostGroupProps) => {
               SearchPostLocation={val.fcltynm}
               SearchPostDate={val.prfstate}
               imageSrc={val.poster}
+              width="280"
             ></SearchPost>
           </Link>
         ))}
       </SearchPostsStyle>
       <Margin bottom={30} />
-      <Button ButtonSummary="더보기" variant="third" height={70} clickEvent={loadMore} />
+      {posts.length !== 0 && (
+        <Button ButtonSummary="더보기" variant="third" height={60} clickEvent={loadMore} width={880} />
+      )}
+      <Margin bottom={30} />
     </SearchPostGroupStyle>
   )
 }

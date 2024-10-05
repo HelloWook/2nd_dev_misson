@@ -3,38 +3,57 @@ import Margin from '@/components/atoms/Margin/Margin'
 import Title from '@/components/atoms/Title/Title'
 import RecommendSlider from '@/components/molecule/RecommedSlider/RecommendSlider'
 import styled from 'styled-components'
-
-interface postInfo {
-  SearchPostTitle: string
-  SearchPostLocation: string
-  SearchPostDate: string
-}
-
-interface recommend {
-  title: string
-  posts: postInfo[]
-}
+import { Performance } from '@/types/types'
+import Subtitle from '@/components/atoms/Subtitle/Subtitle'
 
 interface RecommendSectionProps {
-  recommends: recommend[]
+  firstGenrePerfomance: Performance[]
+  secondGenrePerfomance: Performance[]
+  thirdGenrePerfomance: Performance[]
+  firstGenre: string
+  secondGenre: string
+  thirdGenre: string
 }
 
 const RecommendSectionStlye = styled.div`
-  width: 1200px;
+  width: 1800px;
   margin: auto;
 `
+const SectionStyle = styled.div`
+  text-align: center;
+`
 
-const RecommendSection = ({ recommends = [] }: RecommendSectionProps) => {
+const RecommendSection = ({
+  firstGenrePerfomance,
+  secondGenrePerfomance,
+  thirdGenrePerfomance,
+  firstGenre,
+  secondGenre,
+  thirdGenre,
+}: RecommendSectionProps) => {
   return (
     <RecommendSectionStlye>
-      {recommends.map((recommend, idx) => (
-        <div key={idx}>
-          <Title>{recommend.title}</Title>
-          <Margin bottom={60} />
-          <RecommendSlider posts={recommend.posts} />
-          <Margin bottom={60} />
-        </div>
-      ))}
+      <Margin bottom={90} />
+      <Subtitle>{'추천 목록'}</Subtitle>
+      <Margin bottom={90} />
+      <SectionStyle>
+        <Title>{firstGenre}</Title>
+        <Margin bottom={60} />
+        <RecommendSlider Perfomance={firstGenrePerfomance} />
+        <Margin bottom={60} />
+      </SectionStyle>
+      <SectionStyle>
+        <Title>{secondGenre}</Title>
+        <Margin bottom={60} />
+        <RecommendSlider Perfomance={secondGenrePerfomance} />
+        <Margin bottom={60} />
+      </SectionStyle>
+      <SectionStyle>
+        <Title>{thirdGenre}</Title>
+        <Margin bottom={60} />
+        <RecommendSlider Perfomance={thirdGenrePerfomance} />
+        <Margin bottom={60} />
+      </SectionStyle>
     </RecommendSectionStlye>
   )
 }

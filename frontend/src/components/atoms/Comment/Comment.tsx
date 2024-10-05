@@ -19,6 +19,7 @@ const CommentHeder = styled.div`
 
 const UserTitleStyle = styled.h3`
   font-weight: 700;
+  white-space: nowrap;
 `
 
 const UserStyle = styled.div`

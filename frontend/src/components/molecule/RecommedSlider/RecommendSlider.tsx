@@ -4,13 +4,14 @@ import 'slick-carousel/slick/slick.css'
 import 'slick-carousel/slick/slick-theme.css'
 import styled from 'styled-components'
 import SearchPost from '@/components/molecule/SearchPost/SearchPost'
+import { Performance } from '@/types/types'
 
 const SlideStyle = styled.div`
   .slick-prev:before,
   .slick-next:before {
     content: none;
   }
-  width: 1100px;
+  width: 1500px;
   margin: 0 auto;
   position: relative;
 `
@@ -55,14 +56,8 @@ interface SlickArrowProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>
 }
 
-interface postInfo {
-  SearchPostTitle: string
-  SearchPostLocation: string
-  SearchPostDate: string
-}
-
 interface RecommendSliderProps {
-  posts: postInfo[]
+  Perfomance: Performance[]
 }
 
 const CustomPrevArrow: React.FC<SlickArrowProps> = ({ style, onClick }) => {
@@ -81,9 +76,9 @@ const CustomNextArrow: React.FC<SlickArrowProps> = ({ style, onClick }) => {
   )
 }
 
-const RecommendSlider = ({ posts = [] }: RecommendSliderProps) => {
+const RecommendSlider = ({ Perfomance = [] }: RecommendSliderProps) => {
   const settings: Settings = {
-    infinite: posts.length > 5,
+    infinite: Perfomance.length > 5,
     speed: 500,
     slidesToShow: 5,
     slidesToScroll: 1,
@@ -94,13 +89,14 @@ const RecommendSlider = ({ posts = [] }: RecommendSliderProps) => {
   return (
     <SlideStyle>
       <Slider {...settings}>
-        {posts.map((val, idx) => (
+        {Perfomance.map((val, idx) => (
           <SearchPost
             key={idx}
-            SearchPostTitle={val.SearchPostTitle}
-            SearchPostLocation={val.SearchPostLocation}
-            SearchPostDate={val.SearchPostDate}
-            width="180"
+            SearchPostTitle={val.prfnm}
+            SearchPostLocation={val.fcltynm}
+            SearchPostDate={val.genrenm}
+            imageSrc={val.poster}
+            width="250"
             variant="secondary"
           />
         ))}

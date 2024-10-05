@@ -6,18 +6,17 @@ import useGenre from '@/hooks/useGenre'
 import useSale from '@/hooks/useSale'
 import useDate from './useDate'
 
-const now = new Date()
-
 interface useGetPerformanceParams {
   stdate?: string
   eddate?: string
   openRun?: string
   command?: string
   rows?: number
-  genre?: string
+  genreParam?: string
   page?: number
 }
 
+const now = new Date()
 const currentDate = getDate(now)
 
 const oneMonthLater = new Date(now)
@@ -29,6 +28,7 @@ const useGetPerformance = ({
   eddate = dateMonthLater,
   openRun = '',
   command = '',
+  genreParam = '',
   rows = 10,
   page = 1,
 }: useGetPerformanceParams) => {
@@ -36,7 +36,7 @@ const useGetPerformance = ({
   const [currentPage, setCurrentPage] = useState(page)
   const [isLoading, setIsLoading] = useState(false)
 
-  const { genre, changeGenre } = useGenre()
+  const { genre, changeGenre } = useGenre(genreParam)
   const { sale, changeSale } = useSale()
   const { date, changedate } = useDate()
 
