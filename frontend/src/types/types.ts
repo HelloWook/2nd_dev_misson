@@ -71,4 +71,25 @@ export interface BoxOffice {
   rnum: number // 고유번호 또는 정렬 번호
 }
 
+export interface PerformanceHall {
+  fcltynm: string // 시설 이름
+  mt10id: string // 시설 ID
+  mt13cnt: number // 기타 카운트
+  fcltychartr: string // 시설 특성
+  sidonm: string // 시도 이름
+  gugunnm: string // 구군 이름
+  opende: string | null // 개방일자
+  seatscale: number // 좌석 수
+  telno: string | null // 전화번호
+  relateurl: string | null // 관련 URL
+  adres: string // 주소
+  la: number // 위도
+  lo: number // 경도
+}
+
+export interface Position {
+  latitude: number
+  longitude: number
+}
+
 export type dateType = 'day' | 'week' | 'month'

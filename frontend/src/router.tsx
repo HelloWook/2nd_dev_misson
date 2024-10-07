@@ -7,6 +7,7 @@ import SaerchPage from '@/pages/SaerchPage/SaerchPage'
 import RecommendPage from '@/pages/RecommendPage/RecommendPage'
 import ModalPage from '@/components/Template/ModalPage/ModalPage'
 import RankingPage from '@/pages/RankingPage/RankingPage'
+import PerformanceHall from './components/Template/PerformanceHall/PerformanceHall'
 
 const router = createHashRouter([
   {
@@ -36,6 +37,10 @@ const router = createHashRouter([
       {
         path: '/select',
         element: <ModalPage />,
+      },
+      {
+        path: '/performanceHall',
+        element: <PerformanceHall />,
       },
     ],
   },

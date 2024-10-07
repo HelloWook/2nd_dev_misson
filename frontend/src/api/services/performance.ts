@@ -78,3 +78,12 @@ export const getBoxOffice = async (params: { dateTtype: string; date: string }) 
     console.error('데이터를 불러오는데 실패했습니다.:', error)
   }
 }
+
+export const getPerformanceHall = async () => {
+  try {
+    const response = await api.get(`/performance-facilities`)
+    return response.data
+  } catch (error) {
+    console.error('데이터를 불러오는데 실패했습니다.:', error)
+  }
+}

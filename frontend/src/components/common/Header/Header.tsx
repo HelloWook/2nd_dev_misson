@@ -55,7 +55,7 @@ const Header = () => {
           <Link to={'/rank'}>
             <li>랭킹</li>
           </Link>
-          <Link to={'/'}>
+          <Link to={'/performanceHall'}>
             <li>시설</li>
           </Link>
         </HeaderUlStyle>

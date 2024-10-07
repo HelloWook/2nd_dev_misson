@@ -23,10 +23,9 @@ const useGetBoxOffice = ({ dateTtype }: useGetBoxOfficeParams) => {
   const [dateTtypeState, setTtypeState] = useState<dateType>(dateTtype)
 
   useEffect(() => {
-    const fetchPerformance = async () => {
+    const fetchBoxOffice = async () => {
       try {
         const response = await getBoxOffice({ date: currentDate, dateTtype: dateTtypeState })
-        console.log(response)
         setBoxOffice(response)
       } catch (err) {
         console.error('데이터를 불러오는데 실패했습니다.', err)
@@ -35,7 +34,7 @@ const useGetBoxOffice = ({ dateTtype }: useGetBoxOfficeParams) => {
       }
     }
 
-    fetchPerformance()
+    fetchBoxOffice()
   }, [dateTtypeState])
 
   function changeDate(date: dateType) {
