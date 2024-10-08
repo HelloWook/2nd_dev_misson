@@ -66,11 +66,6 @@ module.exports = (env, argv) => {
             : false, // 개발 환경에서는 압축하지 않음
       }),
       new CleanWebpackPlugin(), // 빌드할 때마다 /dist 폴더를 정리
-      new CopyWebpackPlugin({
-        patterns: [
-          { from: 'public', to: 'public' }, // public 폴더의 파일을 dist 폴더로 복사
-        ],
-      }),
       new webpack.DefinePlugin({ 'process.env': JSON.stringify(process.env) }),
     ],
   }

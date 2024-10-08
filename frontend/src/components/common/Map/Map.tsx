@@ -17,13 +17,15 @@ const Map = ({ performanceHalls }: MapProps) => {
   useEffect(() => {
     const initializeMap = (latitude: number, longitude: number) => {
       const container = document.getElementById('map')
-      const options = {
-        center: new window.kakao.maps.LatLng(latitude, longitude),
-        level: 10,
-      }
+      if (container) {
+        const options = {
+          center: new window.kakao.maps.LatLng(latitude, longitude),
+          level: 10,
+        }
 
-      const mapInstance = new window.kakao.maps.Map(container, options)
-      setMap(mapInstance)
+        const mapInstance = new window.kakao.maps.Map(container, options)
+        setMap(mapInstance)
+      }
     }
 
     navigator.geolocation.getCurrentPosition(
@@ -53,7 +55,7 @@ const Map = ({ performanceHalls }: MapProps) => {
         marker.setMap(map)
 
         const infowindow = new window.kakao.maps.InfoWindow({
-          content: `<div style="padding:5px; ">${hall.fcltynm}</div>`,
+          content: `<div style="padding:5px;">${hall.fcltynm}</div>`,
         })
 
         window.kakao.maps.event.addListener(marker, 'click', () => {
